@@ -12,18 +12,32 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">FreakyFashion</a>
+
+                <input type="search" class="search-input-field" id="main-q" name="q" placeholder="Search Product" pattern="(.|\s)*\S(.|\s)*" required="">
+                
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
+                    <br />
+
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/News">News</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Sale">Sale</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Dresses">Dresses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Shirts">Shirts</a>
                         </li>
                     </ul>
                 </div>
@@ -37,6 +51,15 @@
     </div>
 
     <footer class="border-top footer text-muted">
+        <div >
+            <ul style="display:flex; list-style-type:none; " >
+                <li class="footer-item">Gratis frakt och returer</li>
+                <li class="footer-item">Express frakt</li>
+                <li class="footer-item">Säkra betalningar</li>
+                <li class="footer-item">Nyheter varje dag</li>
+            </ul>
+
+        </div>
         <div class="container">
             &copy; 2020 - FreakyFashion - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>

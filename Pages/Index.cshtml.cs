@@ -1,25 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+using FreakyFashion.Data;
+using FreakyFashion.Data.Caregories;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace FreakyFashion.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly ILogger<IndexModel> logger;      
 
-        public IndexModel(ILogger<IndexModel> logger)
+        private readonly ApplicationDbContext context;
+
+        public IList<Product> ProductList = new List<Product>();
+
+        public IndexModel(ApplicationDbContext context, ILogger<IndexModel> logger)
         {
-            _logger = logger;
+            this.logger = logger;
+            this.context = context;
         }
 
         public void OnGet()
         {
-
+            ProductList = context.Product
+                .ToList();
         }
     }
 }
