@@ -1,7 +1,8 @@
-﻿@using FreakyFashion.Data.Caregories
+﻿@using FreakyFashion.Data.Entities
 @model List<Product>
 @{
     ViewData["Title"] = "Home page";
+    
     bool IsFirstslide(Product product) 
         => product == Model.First();
 }
@@ -11,17 +12,15 @@
         @foreach (var product in Model)
         {
             <div class="carousel-item @(IsFirstslide(product) ? "active" : "")">
-                <div class="row">
-                    <div class="col">
+                <div class="row h-25" >
+                    <div class="col text-center ">
                         <h2>@product.Name</h2>
                         <p>@product.Description</p>
-                        <a href=$"/products/{@product.Id}" class="btn btn-light">
-                            SIGN UP
-                        </a>
+                        <a href=$"/Product/{@product.Id}" class="btn btn-dark  float-right'"> Show more</a>
                     </div>
                     <div class="col">
                         <img src="@product.ImageUrl"
-                             class="d-block w-100"
+                             class="d-block w-75 h-75"
                              alt="@product.Name">
                     </div>
                 </div>
@@ -30,12 +29,16 @@
     </div>
     <a class="carousel-control-prev" href="#hero" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
+        <span class="sr-only ">Previous</span>
     </a>
     <a class="carousel-control-next" href="#hero" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="carousel- control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a>
+</div>
+<div class="container">
+
+
 </div>
 
 

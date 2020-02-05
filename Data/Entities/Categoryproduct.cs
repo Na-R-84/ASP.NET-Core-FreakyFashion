@@ -1,17 +1,32 @@
-﻿using FreakyFashion.Data.Caregories;
+﻿
 using FreakyFashion.Data.Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace FreakyFashion.Data
+namespace Colonize.Website.Data.Entities
 {
-    public class Categoryproduct
+    public class CategoryProduct
     {
-        public Category   Category { get; set; }
-        public int CategoryId { get; set; }
-        public Product Product { get; set; }
-        public  int ProductId { get; set; }
+        public CategoryProduct( int productId, int categoryId)
+        {
+  
+            ProductId = productId;
+            CategoryId = categoryId;
+        }
+
+        public CategoryProduct(int productId, string v, int categoryId)
+        {
+            CategoryId = categoryId;
+            ProductId = productId;
+          
+        }
+        public CategoryProduct(int v)
+        {
+
+        }
+     
+        public Product Product { get; protected set; }
+        public Category Category { get; protected set; }
+        public int ProductId { get; protected set; }
+        public int CategoryId { get; }
     }
 }

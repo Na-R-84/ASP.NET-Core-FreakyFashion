@@ -1,28 +1,27 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using FreakyFashion.Data;
-using FreakyFashion.Data.Caregories;
+using FreakyFashion.Data.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 
 namespace FreakyFashion
 {
     public class ProductModel : PageModel
     {
-        public int Id { get; set; }
         private ApplicationDbContext context;
-        public Product product { get; set; }
+        public int Id { get; set; }
+        public Product Product { get; set; }
+        public List<Product> Products { get; set; }
         public ProductModel(ApplicationDbContext context)
         {
             this.context = context;
         }
-        public IActionResult OnGet()
+        public IActionResult OnGet(int id)
         {
-            product = context.Product
-                .Include(x => x.Name)
-                .FirstOrDefault(x => x.Id == Id);
-
-            if (product== null)
+            Product = this.context.Product.FirstOrDefault(x => x.Id == id);
+            Products = this.context.Product.ToList();
+            if (Product == null)
             {
                 return NotFound(); // HTTP 404
             }

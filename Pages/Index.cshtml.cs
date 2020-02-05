@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using FreakyFashion.Data;
-using FreakyFashion.Data.Caregories;
+using FreakyFashion.Data.Entities;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -14,7 +14,8 @@ namespace FreakyFashion.Pages
 
         private readonly ApplicationDbContext context;
 
-        public IList<Product> ProductList = new List<Product>();
+        public List<Product> ProductList = new List<Product>();
+        public List<Category> CategoryList = new List<Category>();
 
         public IndexModel(ApplicationDbContext context, ILogger<IndexModel> logger)
         {
@@ -26,6 +27,8 @@ namespace FreakyFashion.Pages
         {
             ProductList = context.Product
                 .ToList();
+
+            CategoryList = context.Categories.ToList();
         }
     }
 }

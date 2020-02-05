@@ -1,0 +1,19 @@
+﻿@using FreakyFashion.Data.Entities
+@model List<Category>
+@{
+    ViewData["Title"] = "Home page";
+}
+    <div class="row">
+        <h2 class="text-center">Categories</h2> 
+        <div class="w-100"></div>
+        @foreach (var category in Model.Take(3))
+        {
+
+            <div class="col">
+                <h2>@category.Name</h2>
+                <img src="@category.ImageUrl" />
+
+            </div>
+        }
+    </div>
+

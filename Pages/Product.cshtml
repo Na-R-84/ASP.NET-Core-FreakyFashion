@@ -1,0 +1,29 @@
+﻿@page "{id}"
+@model FreakyFashion.ProductModel
+@{
+    ViewData["Title"] = "Product";
+}
+    <div class="row">
+        <div class="col">
+
+            <h1>@Model.Product.Name</h1>
+            <p>@Model.Product.Description</p>
+            <p>@Model.Product.Price</p>
+            <a href ="#" class="btn btn-dark">Buy</a>
+        </div>
+
+        <div class="col">
+        <img src="@Model.Product.ImageUrl" alt="@Model.Product.ImageUrl" />
+        </div>
+    </div>
+<hr />
+<div class="row">
+    @foreach(var product in Model.Products )
+    {
+        <div class ="col w-25">
+            <img src="@product.ImageUrl" />
+        </div>
+    }
+
+</div>
+
