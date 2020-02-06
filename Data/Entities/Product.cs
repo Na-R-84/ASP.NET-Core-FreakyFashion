@@ -26,6 +26,7 @@ namespace FreakyFashion.Data.Entities
         public string Description { get; set; }
         public Uri ImageUrl { get; set; }
         public decimal Price { get; set; }
+        public int ArticleNumber { get; set; }
     }
 
 }

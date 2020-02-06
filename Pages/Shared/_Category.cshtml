@@ -3,17 +3,20 @@
 @{
     ViewData["Title"] = "Home page";
 }
-    <div class="row">
-        <h2 class="text-center">Categories</h2> 
-        <div class="w-100"></div>
+<div class="container">
+    <h2 class="text-center">Categories</h2>
+    <div class="row h-25 ">
+
         @foreach (var category in Model.Take(3))
         {
 
-            <div class="col">
-                <h2>@category.Name</h2>
-                <img src="@category.ImageUrl" />
+            <div class="col w-25">
+
+                <a href="/Category/@category.Id"><img src="@category.ImageUrl" /> </a>
 
             </div>
         }
     </div>
+
+</div>
 
