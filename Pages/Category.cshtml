@@ -6,55 +6,17 @@
 }
 
 
-<div class="row">
-    <div class="col-md-12">
+    <div class="row">
+        @foreach (var item in Model.Category.CategoryProducts)
+        {
 
-        <div id="mdb-lightbox-ui">@Model.Category.Name</div>
-        <hr />
+            <div class="col w-25">
 
-        <div class="mdb-lightbox">
-            <div class="row">
-                <figure class="col-md-3">
-                    <img src="@Model.Category.ImageUrl" alt="@Model.Category.ImageUrl" class="img-fluid" />
-                </figure>
+                <a href="/Product/@item.Product.Id"><img src="@item.Product.ImageUrl" /> </a>
 
-
-                <figure class="col-md-3">
-                    <img src="@Model.Category.ImageUrl" alt="@Model.Category.ImageUrl" class="img-fluid" />
-                </figure>
-
-
-                <figure class="col-md-3">
-                    <img src="@Model.Category.ImageUrl" alt="@Model.Category.ImageUrl" class="img-fluid" />
-                </figure>
-
-
-                <figure class="col-md-3">
-                    <img src="@Model.Category.ImageUrl" alt="@Model.Category.ImageUrl" class="img-fluid" />
-                </figure>
             </div>
-            <div class="row">
-                <figure class="col-md-3">
-                    <img src="@Model.Category.ImageUrl" alt="@Model.Category.ImageUrl" class="img-fluid" />
-                </figure>
-
-                <figure class="col-md-3">
-                    <img src="@Model.Category.ImageUrl" alt="@Model.Category.ImageUrl" class="img-fluid" />
-                </figure>
-
-                <figure class="col-md-3">
-                    <img src="@Model.Category.ImageUrl" alt="@Model.Category.ImageUrl" class="img-fluid" />
-                </figure>
-
-                <figure class="col-md-3">
-                    <img src="@Model.Category.ImageUrl" alt="@Model.Category.ImageUrl" class="img-fluid" />
-
-                </figure>
-            </div>
-        </div>
-
+        }
     </div>
-</div>
 
  
 
