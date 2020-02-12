@@ -1,0 +1,80 @@
+﻿@page
+@model FreakyFashion.Pages.Admin.Pages.NewModel
+@{
+    ViewData["Title"] = "New product";
+
+}
+
+    <form method="post">
+        <div class="row">
+            <div class="col-2">
+                <div class="form-group">
+                    <label>Namn</label>
+                    <input asp-for="viewModel.Name" class="form-control">
+                    <span asp-validation-for="viewModel.Name"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-2">
+                <div class="form-group">
+                    <label>Article Number</label>
+                    <input asp-for="viewModel.Name" class="form-control">
+                    <span asp-validation-for="viewModel.Name"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea asp-for="viewModel.Description" class="form-control" rows="4"></textarea>
+                    <span asp-validation-for="viewModel.Description"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="cars">
+                        <option value="dress">Dress</option>
+                        <option value="outwear">Outwear</option>
+                        <option value="trousers">Trousers</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <div class="form-group">
+                    <label>Price</label>
+                    <input asp-for="viewModel.Name" class="form-control">
+                    <span asp-validation-for="viewModel.Name"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <div class="form-group">
+                    <label>Image </label>
+                    <input asp-for="viewModel.ImageUrl" class="form-control">
+                    <span asp-validation-for="viewModel.ImageUrl"></span>
+                </div>
+            </div>
+        </div>
+
+        <a href="/areas/admin/pages/new" class="btn btn-primary"> Add</a>
+           
+       
+    </form>
+    <div>
+        <a asp-page="Index">Back to List</a>
+    </div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+

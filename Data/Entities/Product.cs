@@ -6,6 +6,10 @@ namespace FreakyFashion.Data.Entities
 {
     public class Product
     {
+        public Product()
+        {
+
+        }
         public Product(int id, string name, string description, Uri imageUrl, decimal price)
             : this(name, description, imageUrl, price)
         {
@@ -18,6 +22,15 @@ namespace FreakyFashion.Data.Entities
             Description = description;
             ImageUrl = imageUrl;
             Price = price;
+        }
+
+        public Product(string name, string description, Uri imageUrl, decimal price, int articleNumber)
+        {
+            Name = name;
+            Description = description;
+            ImageUrl = imageUrl;
+            Price = price;
+            ArticleNumber = articleNumber;
         }
 
         public List<CategoryProduct> categoryProducts { get; set; }
