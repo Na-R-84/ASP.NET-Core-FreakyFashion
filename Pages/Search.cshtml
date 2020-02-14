@@ -1,0 +1,13 @@
+﻿@page "{searchString?}"
+@model FreakyFashion.SearchModel
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h1>SearchReesults my brotha!</h1>
+@if (Model.SearchResult.Count == 0)
+{<div>Nay My brother we found nozhink!</div>}
+@foreach (var result in Model.SearchResult)
+{
+<a href="/Product/@result.Id"><div>@result.Name</div></a>
+}

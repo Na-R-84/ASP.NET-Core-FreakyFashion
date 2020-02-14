@@ -10,7 +10,7 @@ namespace FreakyFashion.Data
         public DbSet<Product> Product { get; set; }
         public DbSet<CategoryProduct> CategoryProducts { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public object Category { get; internal set; }
+ 
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

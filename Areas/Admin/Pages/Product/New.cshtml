@@ -20,8 +20,8 @@
             <div class="col-2">
                 <div class="form-group">
                     <label>Article Number</label>
-                    <input asp-for="viewModel.Name" class="form-control">
-                    <span asp-validation-for="viewModel.Name"></span>
+                    <input asp-for="viewModel.ArticleNumber" class="form-control">
+                    <span asp-validation-for="viewModel.ArticleNumber"></span>
                 </div>
             </div>
         </div>
@@ -39,20 +39,20 @@
             <div class="col-2">
                 <div class="form-group">
                     <label>Category</label>
-                    <select id="cars">
-                        <option value="dress">Dress</option>
-                        <option value="outwear">Outwear</option>
-                        <option value="trousers">Trousers</option>
+                    <select multiple asp-for="CategoryProducts" asp-items="Model.CategoryListItems">
+                        <span asp-validation-for="Categories" class="text-danger"></span>
+
                     </select>
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="col-2">
                 <div class="form-group">
                     <label>Price</label>
-                    <input asp-for="viewModel.Name" class="form-control">
-                    <span asp-validation-for="viewModel.Name"></span>
+                    <input asp-for="viewModel.Price" class="form-control">
+                    <span asp-validation-for="viewModel.Price"></span>
                 </div>
             </div>
         </div>
@@ -65,10 +65,10 @@
                 </div>
             </div>
         </div>
+        @*<a href="/admin/pages/new" class="btn btn-primary"> Add</a>*@
+        <button type="submit">Add</button>
 
-        <a href="/areas/admin/pages/new" class="btn btn-primary"> Add</a>
-           
-       
+
     </form>
     <div>
         <a asp-page="Index">Back to List</a>

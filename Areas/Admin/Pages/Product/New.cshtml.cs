@@ -1,8 +1,13 @@
-﻿using FreakyFashion.Data;
+﻿using Colonize.Website.Data.Entities;
+using FreakyFashion.Data;
+using FreakyFashion.Data.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace FreakyFashion.Pages.Admin.Pages
 {
@@ -12,7 +17,10 @@ namespace FreakyFashion.Pages.Admin.Pages
 
         [BindProperty]
         public NewProductViewModel viewModel { get; set; }
-
+        public List<SelectListItem> CategoryListItems { get; set; } = new List<SelectListItem>();
+        public List<Category> Categories { get; set; }
+        [BindProperty]
+        public List<int> CategoryProducts { get; set; }
         public NewModel(ApplicationDbContext context)
         {
             this.context = context;
@@ -20,7 +28,19 @@ namespace FreakyFashion.Pages.Admin.Pages
 
         public void OnGet()
         {
+            Categories = context.Categories.ToList();
 
+            foreach (var item in Categories)
+            {
+                CategoryListItems.Add(
+                    new SelectListItem
+                    {
+                        Value = item.Id.ToString(),
+                        Text = item.Name
+                    }
+
+                    ); ;
+            }
         }
 
         public IActionResult OnPost()
@@ -43,6 +63,12 @@ namespace FreakyFashion.Pages.Admin.Pages
 
             context.SaveChanges();
 
+            foreach (var relation in CategoryProducts)
+            {
+                context.CategoryProducts.Add(new CategoryProduct(product.Id, relation));
+                context.SaveChanges();
+            }
+
             return RedirectToPage("Index");
         }
 
@@ -59,13 +85,12 @@ namespace FreakyFashion.Pages.Admin.Pages
             [Required]
             public string Description { get; set; }
 
-            [Required]
-            public string Category { get; set; }
+      
             [Required]
             public decimal Price { get; set; }
             [Required]
             public string ImageUrl { get; set; }
-
+       
 
         }
     }
