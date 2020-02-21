@@ -1,0 +1,46 @@
+﻿@page
+@model FreakyFashion.Areas.Admin.Pages.Category.IndexModel
+@{
+
+    ViewData["Title"] = "Index";
+
+}
+<h1>Categori Lists</h1>
+
+<div class="row">
+    <div class="col">
+        <br />
+        <a href="/admin/Category/new" class="btn btn-primary float-right">Add</a>
+    </div>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Quantity </th>
+          
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.Category)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => product.Name)
+                </td>
+                <td>
+                    @foreach (var item in product.CategoryProducts)
+                    {
+                        @item.Category.Quantity
+                    }
+                </td>
+
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@product.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@product.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@product.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

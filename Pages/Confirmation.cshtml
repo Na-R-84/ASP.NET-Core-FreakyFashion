@@ -1,0 +1,61 @@
+﻿@page "{searchString?}"
+
+@model FreakyFashion.ConfirmationModel
+@{
+    ViewData["Title"] = "Confirmation";
+}
+
+<h1 class="text-center font-weight-bold">Confirmation</h1>
+<h4 class="text-center">Thank you for your order</h4>
+<h4 class="text-center">Payment has been made and the order is shipped in 2 working days</h4>
+<br />
+<h3>Order Details</h3>
+<hr class="h-25 w-25" />
+<p>
+    John Doe <br /> Lyton Road <br /> EN5 5BU London
+</p>
+
+<h3 class="text-center">Ordered Items</h3>
+<form method="post" asp-page="Basket" asp-page-handler="update">
+    <table border="1">
+        <tr>
+            <th>      </th>
+            <th>Price</th>
+            <th>Quantity <input type="submit" value="Update" /></th>
+            <th>Sub Total</th>
+        </tr>
+        @foreach (var item in Model.confirmation)
+        {
+            <tr align="center">
+
+                <td>
+                    <div class="row">
+                        <div class="col border"><img src="~/images/@item.Product.ImageUrl" width="50" height="50" /></div>
+                        <div class="col">
+                            <h5>@item.Product.Name</h5>
+                            <h6>@item.Product.</h6>
+                        </div>
+                    </div>
+                </td>
+                <td>$@item.Product.Price</td>
+                <td><input type="number" name="quantities" value="@item.Quantity" min="1" style="width: 50px;" /></td>
+                <td>
+                    $@(item.Product.Price * item.Quantity)
+                </td>
+            </tr>
+        }
+        <tr>
+            <td colspan="6" align="right">Total</td>
+            <td align="center">$@Model.Total</td>
+        </tr>
+    </table>
+
+</form>
+
+<div class="border">
+    <h4>Total Items : </h4>
+    <h6>Shipping : 100.00</h6>
+    <h4>Total : </h4>
+</div>
+
+

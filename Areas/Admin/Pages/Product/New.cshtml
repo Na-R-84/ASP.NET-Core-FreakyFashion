@@ -1,80 +1,78 @@
 ﻿@page
-@model FreakyFashion.Pages.Admin.Pages.NewModel
+@model FreakyFashion.Areas.Admin.Pages.Product.NewModel
 @{
     ViewData["Title"] = "New product";
-
 }
 
-    <form method="post">
-        <div class="row">
-            <div class="col-2">
-                <div class="form-group">
-                    <label>Namn</label>
-                    <input asp-for="viewModel.Name" class="form-control">
-                    <span asp-validation-for="viewModel.Name"></span>
-                </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-2">
-                <div class="form-group">
-                    <label>Article Number</label>
-                    <input asp-for="viewModel.ArticleNumber" class="form-control">
-                    <span asp-validation-for="viewModel.ArticleNumber"></span>
-                </div>
-            </div>
-        </div>
+<h1>New Product</h1>
 
-        <div class="row">
-            <div class="col-6">
-                <div class="form-group">
-                    <label>Description</label>
-                    <textarea asp-for="viewModel.Description" class="form-control" rows="4"></textarea>
-                    <span asp-validation-for="viewModel.Description"></span>
-                </div>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Product.Name" class="control-label"></label>
+                <input asp-for="Product.Name" class="form-control" />
+                <span asp-validation-for="Product.Name" class="text-danger"></span>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-2">
-                <div class="form-group">
-                    <label>Category</label>
-                    <select multiple asp-for="CategoryProducts" asp-items="Model.CategoryListItems">
-                        <span asp-validation-for="Categories" class="text-danger"></span>
-
-                    </select>
-                </div>
+            <div class="form-group">
+                <label asp-for="Product.ArticleNumber" class="control-label"></label>
+                <input asp-for="Product.ArticleNumber" class="form-control" />
+                <span asp-validation-for="Product.ArticleNumber" class="text-danger"></span>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-2">
-                <div class="form-group">
-                    <label>Price</label>
-                    <input asp-for="viewModel.Price" class="form-control">
-                    <span asp-validation-for="viewModel.Price"></span>
-                </div>
+            <div class="form-group">
+                <label asp-for="Product.Description" class="control-label"></label>
+                <textarea asp-for="Product.Description" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="Product.Description" class="text-danger"></span>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-3">
-                <div class="form-group">
-                    <label>Image </label>
-                    <input asp-for="viewModel.ImageUrl" class="form-control">
-                    <span asp-validation-for="viewModel.ImageUrl"></span>
-                </div>
-            </div>
-        </div>
-        @*<a href="/admin/pages/new" class="btn btn-primary"> Add</a>*@
-        <button type="submit">Add</button>
 
 
-    </form>
-    <div>
-        <a asp-page="Index">Back to List</a>
+            @*<div class="form-group">
+                <label>Category</label>
+                <select multiple asp-for="ViewModel.CategoryId" asp-items="Model.ViewModel.CategoryId">
+                    <span asp-validation-for="ViewModel.CategoryId" class="text-danger"></span>
+
+                </select>
+            </div>*@
+            <div class="form-group">
+
+            <label class="control-label">Categories  </label>
+            <select multiple asp-for="Product.categoryProducts" class="form-control"></select>
+            <span asp-validation-for="Product.categoryProducts" class="text-danger"></span>
+        </div>
+
+
+
+            <div class="form-group">
+                <label asp-for="Product.Price" class="control-label"></label>
+                <input asp-for="Product.Price" class="form-control" />
+                <span asp-validation-for="Product.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.ImageUrl" class="control-label"></label>
+                <input asp-for="Product.ImageUrl" class="form-control" />
+                <span asp-validation-for="Product.ImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-primary" />
+            </div>
+        </form>
     </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
 
 @section Scripts {
-    @await Html.PartialAsync("_ValidationScriptsPartial")
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+
+
+
+
+
 

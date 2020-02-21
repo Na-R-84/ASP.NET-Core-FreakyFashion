@@ -1,0 +1,46 @@
+﻿@page "{searchString?}"
+@model BasketModel
+@{
+    ViewData["Title"] = "Basket";
+}
+
+<h3>Basket</h3>
+
+<form method="post" asp-page="Basket" asp-page-handler="update">
+    <table border="1">
+        <tr>
+            <th>      </th>
+            <th>Price</th>
+            <th>Quantity <input type="submit" value="Update" /></th>
+            <th>Sub Total</th>
+        </tr>
+        @foreach (var item in Model.basket)
+        {
+            <tr align="center">
+
+                <td>
+                    <div class="row">
+                        <div class="col border"><img src="~/images/@item.Product.ImageUrl" width="50" height="50" /></div>
+                        <div class="col">
+                            <h5>@item.Product.Name</h5>
+                            <h6>@item.Product.</h6>
+                        </div>
+                    </div>
+                </td>
+                <td>$@item.Product.Price</td>
+                <td><input type="number" name="quantities" value="@item.Quantity" min="1" style="width: 50px;" /></td>
+                <td>
+                    $@(item.Product.Price * item.Quantity)
+                </td>
+            </tr>
+        }
+        <tr>
+            <td colspan="6" align="right">Total</td>
+            <td align="center">$@Model.Total</td>
+        </tr>
+    </table>
+
+</form>
+
+<a asp-page="Basket">buy</a>
+<a asp-page="index">Continue Shopping</a>

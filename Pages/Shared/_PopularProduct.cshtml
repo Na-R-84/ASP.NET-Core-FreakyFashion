@@ -11,7 +11,7 @@
 
             @foreach (var product in Model.Take(8))
             {
-                <div class="col w-25">
+                <div class="col w-25 m-2">
                     <a href="/Product/@product.Id"><img src="@product.ImageUrl" /> </a>
                 </div>
             }

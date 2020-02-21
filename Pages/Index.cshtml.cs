@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using FreakyFashion.Data;
-using FreakyFashion.Data.Entities;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+
 
 namespace FreakyFashion.Pages
 {
@@ -14,8 +13,8 @@ namespace FreakyFashion.Pages
 
         private readonly ApplicationDbContext context;
 
-        public List<Product> ProductList = new List<Product>();
-        public List<Category> CategoryList = new List<Category>();
+        public List<Data.Entities.Product> ProductList = new List<Data.Entities.Product>();
+        public List<Data.Entities.Category> CategoryList = new List<Data.Entities.Category>();
 
         public IndexModel(ApplicationDbContext context, ILogger<IndexModel> logger)
         {
@@ -25,8 +24,7 @@ namespace FreakyFashion.Pages
 
         public void OnGet()
         {
-            ProductList = context.Product
-                .ToList();
+            ProductList = context.Products.ToList();
 
             CategoryList = context.Categories.ToList();
         }

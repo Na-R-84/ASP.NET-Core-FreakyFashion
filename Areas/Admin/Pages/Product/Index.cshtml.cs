@@ -19,7 +19,7 @@ namespace FreakyFashion.Areas.Admin.Pages
         }
         public void OnGet()
         {
-            Products = context.Product.Include(x=> x.categoryProducts).ThenInclude(x=> x.Category).ToList();
+            Products = context.Products.Include(x=> x.categoryProducts).ThenInclude(x=> x.Category).ToList();
         }
     }
 }

@@ -12,11 +12,12 @@
 <body>
 
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Administration</a>
-        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" asp-area="Admin" asp-page="/Index">Administration</a>
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
-                <a class="nav-link" href="#">Sign out</a>
+                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                    <button type="submit" class="nav-link btn btn-link text-light">Logout</button>
+                </form>
             </li>
         </ul>
     </nav>
@@ -27,13 +28,13 @@
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
-                                <span data-feather="home"><i class="fas fa-home"></i></span>
+                            <a class="nav-link active" asp-area="Admin" asp-page="/Index">
+                                <i class="fas fa-home"></i><span data-feather="home"></span>
                                 Dashboard <span class="sr-only">(current)</span>
                             </a>
                         </li>
                     </ul>
-
+                    <hr />
                     <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                         <span>Products</span>
                         <a class="d-flex align-items-center text-muted" href="/" aria-label="Add a new report">
@@ -42,17 +43,55 @@
                     </h6>
                     <ul class="nav flex-column mb-2">
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin/product">
+                            <a class="nav-link" asp-area="Admin" asp-page="/Product/Index">
                                 <span data-feather="file-text"><i class="fab fa-product-hunt"></i></span>
-                                List Products
+                                Products List
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link"  href="/admin/product/new">
-                                <span data-feather="file-text"><i class="fas fa-plus-circle"></i></span>
-                                Add Product
+                            <a class="nav-link" asp-area="Admin" asp-page="/product/New">
+                                <i class="fas fa-plus-circle"></i> <span data-feather="file-text"></span>
+                                New Product
                             </a>
                         </li>
+                    </ul>
+                    <hr />
+                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>Categories</span>
+                        <a class="d-flex align-items-center text-muted" href="/" aria-label="Add a new report">
+                            <span data-feather="plus-circle"></span>
+                        </a>
+                    </h6>
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link fab fa-product-hunt" asp-area="Admin" asp-page="/Category/Index">
+                                <span data-feather="file-text"></span>
+                                Category List
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fas fa-plus-circle" asp-area="Admin" asp-page="/Category/New">
+                                <span data-feather="file-text"></span>
+                                New Category
+                            </a>
+                        </li>
+                    </ul>
+
+                    <hr />
+                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>Orders</span>
+                        <a class="d-flex align-items-center text-muted" href="/" aria-label="Add a new report">
+                            <span data-feather="plus-circle"></span>
+                        </a>
+                    </h6>
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link fab fa-product-hunt" asp-area="Admin" asp-page="/OrderList">
+                                <span data-feather="file-text"></span>
+                                Order List
+                            </a>
+                        </li>
+                        
                     </ul>
                 </div>
             </nav>

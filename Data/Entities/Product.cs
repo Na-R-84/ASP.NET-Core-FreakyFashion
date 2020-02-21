@@ -10,12 +10,20 @@ namespace FreakyFashion.Data.Entities
         {
 
         }
+    
         public Product(int id, string name, string description, Uri imageUrl, decimal price)
             : this(name, description, imageUrl, price)
         {
             Id = id;
         }
-
+      
+        public Product(int id, string name, string description, Uri imageUrl)
+        {
+            Id = id;
+            Name = name;
+            Description = description;
+            ImageUrl = imageUrl;
+        }
         public Product(string name, string description, Uri imageUrl, decimal price)
         {
             Name = name;
@@ -24,13 +32,30 @@ namespace FreakyFashion.Data.Entities
             Price = price;
         }
 
-        public Product(string name, string description, Uri imageUrl, decimal price, int articleNumber)
+        public Product(string name, string description, Uri imageUrl, decimal price, string articleNumber)
         {
             Name = name;
             Description = description;
             ImageUrl = imageUrl;
             Price = price;
             ArticleNumber = articleNumber;
+        }
+        public Product(
+           int id,
+           string name,
+           string description,
+           decimal price,
+           string articleNumber,
+           Uri imageUrl,
+           string urlSlug)
+        {
+            Id = id;
+            Name = name;
+            Description = description;
+            Price = price;
+            ArticleNumber = articleNumber;
+            ImageUrl = imageUrl;
+            UrlSlug = urlSlug;
         }
 
         public List<CategoryProduct> categoryProducts { get; set; }
@@ -39,7 +64,11 @@ namespace FreakyFashion.Data.Entities
         public string Description { get; set; }
         public Uri ImageUrl { get; set; }
         public decimal Price { get; set; }
-        public int ArticleNumber { get; set; }
+        public string ArticleNumber { get; set; }
+        public string UrlSlug { get; set; }
+
+
+      
     }
 
 }

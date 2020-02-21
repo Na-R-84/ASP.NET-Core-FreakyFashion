@@ -28,7 +28,7 @@ namespace FreakyFashion
                 return NotFound();
             }
 
-            Product = await _context.Product.FirstOrDefaultAsync(m => m.Id == id);
+            Product = await _context.Products.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Product == null)
             {

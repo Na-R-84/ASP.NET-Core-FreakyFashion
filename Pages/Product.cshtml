@@ -1,6 +1,6 @@
 ﻿@page "{id}"
 @using FreakyFashion.Data.Entities
-@model FreakyFashion.ProductModel
+@model FreakyFashion.ProductModelOne
 @{
     ViewData["Title"] = "Product";
 }
@@ -19,7 +19,8 @@
                 <p class="font-weight-lighter text-muted">@Model.Product.ArticleNumber</p>
                 <p>@Model.Product.Description</p>
                 <p>@Model.Product.Price</p>
-                <a href="#" class="btn btn-dark">Buy</a>
+                <a asp-page="cart" asp-page-handler="buynow" asp-route-id="@Model.Product.Id">Buy Now</a>
+
             </div>
         </div>
         <hr />

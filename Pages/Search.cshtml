@@ -4,10 +4,25 @@
     ViewData["Title"] = "Search";
 }
 
-<h1>SearchReesults my brotha!</h1>
+<h1>Search Result</h1>
+
 @if (Model.SearchResult.Count == 0)
-{<div>Nay My brother we found nozhink!</div>}
-@foreach (var result in Model.SearchResult)
+{<div>Not Found</div>}
+
+@foreach (var product in Model.SearchResult)
 {
-<a href="/Product/@result.Id"><div>@result.Name</div></a>
+        <div href="/Product/@product.Id" class="row border">
+            <a href="/Product/@product.Id">
+                <div class="row">
+                    <div class="col r"><img   height="45" width="45" src=" @product.ImageUrl"/></div>
+                    <div class="col">
+                    <h5>@product.Name</h5>
+                    <h6>@product.Price</h6>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+
+
 }

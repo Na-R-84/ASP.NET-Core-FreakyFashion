@@ -18,7 +18,7 @@ namespace FreakyFashion
         
         public void OnGet(string searchString)
         {
-            SearchResult = context.Product.Where(x => x.Name.Contains(searchString)).ToList();
+            SearchResult = context.Products.Where(x => x.Name.Contains(searchString)).ToList();
         }
     }
 }

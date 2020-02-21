@@ -1,0 +1,48 @@
+﻿@page
+@model FreakyFashion.OrderListModel
+@{
+    ViewData["Title"] = "Order";
+}
+
+
+<div class="row">
+    <div class="col">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Coustomer</th>
+                    <th>Date</th>
+                    <th>Total Price</th>
+
+                </tr>
+            </thead>
+            @*<tbody>
+                @foreach (var customer in Model.Customers)
+                {
+                    <tr>
+                        <td>@customer.Name @customer.LastName</td>
+                        <td>@customer.Order.OrderDate</td>
+                        <td>@customer.Order.OrderPrice</td>
+                      
+                    </tr>
+                }
+            </tbody>*@
+        <tbody>
+            <tr>
+                <td>John Doe</td>
+                <td>2020-01-15 12:00</td>
+                <td>299.00 sek</td>
+
+            </tr>
+            <tr>
+                <td>JaneDoe</td>
+                <td>2020-02-15 14:20</td>
+                <td>499.00 sek</td>
+
+            </tr>
+        </tbody>
+        </table>
+    </div>
+</div>
+
+

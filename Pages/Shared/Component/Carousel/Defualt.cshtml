@@ -1,0 +1,38 @@
+﻿@using FreakyFashion.Data.Entities
+@model List<Product>
+
+@{
+    bool IsFirstSlide(Product product)
+        => product == Model.First();
+}
+
+<div id="hero" class="hero carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        @foreach (var product in Model)
+        {
+            <div class="carousel-item @(IsFirstSlide(product) ? "active" : "")">
+                <div class="row h-25">
+                    <div class="col text-center ">
+                        <h2>@product.Name</h2>
+                        <p>@product.Description</p>
+                        <a href="/Product/@product.Id" class="btn btn-dark  float-right'"> Show more</a>
+                    </div>
+                    <div class="col">
+                        <img src="@product.ImageUrl"
+                             class="d-block w-h-75"
+                             alt="@product.Name">
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <a class="carousel-control-prev" href="#hero" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only ">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#hero" role="button" data-slide="next">
+        <span class="carousel- control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<hr class="w-25" />

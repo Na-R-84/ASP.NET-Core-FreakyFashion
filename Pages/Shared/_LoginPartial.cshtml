@@ -2,28 +2,25 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-<ul class="navbar-nav">
-@if (SignInManager.IsSignedIn(User))
-{
-    <li class="nav-item">
-        <a  class="nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><i class="fas fa-sign-in-alt"></i></a>
-    </li>
-    <li class="nav-item">
-        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post" >
-            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-        </form>
-    </li>
-}
-else
-{
-    <li class="nav-item ">
-        <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Register">
-            <i class="fas fa-user  mr-4"></i>
-        </a>
-    </li>
-    <li class="nav-item pb-4 ">
-        <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Login"></a>
-        <i class="fas fa-shopping-cart"></i>
-    </li>
-}
-</ul>
+    <ul class="navbar-nav">
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <li class="nav-item">
+                <a class="fas fa-user-circle  fa-2x" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"></a>
+            </li>
+            <li class="nav-item">
+                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                    <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                </form>
+            </li>
+        }
+        else
+        {
+        <li class="nav-item  ">                                                                                                                           
+            <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        </li>
+        <li class="nav-item ">
+            <a class="fas fa-sign-in-alt" asp-area="Identity" asp-page="/Account/Login"></a>
+        </li>
+        }
+    </ul>
