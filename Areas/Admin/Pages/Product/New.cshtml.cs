@@ -1,6 +1,4 @@
 ﻿using FreakyFashion.Data;
-using FreakyFashion.Areas.Admin.Pages.Category;
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
@@ -21,21 +19,34 @@ namespace FreakyFashion.Areas.Admin.Pages.Product
 
         public CategoryModel ViewModel { get; set; }
 
-        public void OnGet()
-        {
-            ViewModel = new CategoryModel();
-            ViewModel.CategoryList = _context.Categories.ToList()
-               
-               .Select(x => new SelectListItem
-               {
-                   Value = x.Id.ToString(),
-                   Text = x.Name
-               });
+        //public void OnGet()
+        //{
+        //    ViewModel = new CategoryModel();
+        //    ViewModel.CategoryList = _context.Categories.ToList()
 
-        }
+        //       .Select(x => new SelectListItem
+        //       {
+        //           Value = x.Id.ToString(),
+        //           Text = x.Name
+        //       });
+
+        //}
 
         [BindProperty]
         public Data.Entities.Product Product { get; set; }
+
+
+        public List<SelectListItem> Catrgory { get; set; }
+        public void OnGet()
+        {
+            Catrgory = _context.Categories.Select(a =>
+                                          new SelectListItem
+                                          {
+                                              Value = a.Id.ToString(),
+                                              Text = a.Name
+                                          }).ToList();
+        }
+
 
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
@@ -45,8 +56,8 @@ namespace FreakyFashion.Areas.Admin.Pages.Product
             {
                 return Page();
             }
-            var Category = new Data.Entities.Category(
-               ViewModel.CategoryId);
+            //var Category = new Data.Entities.Category(
+            //   ViewModel.CategoryId);
 
             var urlSlug = Product.Name.Replace(' ', '-').ToLower();
 
@@ -84,12 +95,12 @@ namespace FreakyFashion.Areas.Admin.Pages.Product
 
         }
     }
-    public class CategoryModel
-    {
-   public IEnumerable<SelectListItem> CategoryID { get; set; }
+   // public class CategoryModel
+   // {
+   //public IEnumerable<SelectListItem> CategoryID { get; set; }
 
-        [Required]
-        public int CategoryId { get; set; }
-        public IEnumerable<SelectListItem> CategoryList { get; internal set; }
-    }
+   //     [Required]
+   //     public int CategoryId { get; set; }
+   //     public IEnumerable<SelectListItem> CategoryList { get; internal set; }
+   // }
 }

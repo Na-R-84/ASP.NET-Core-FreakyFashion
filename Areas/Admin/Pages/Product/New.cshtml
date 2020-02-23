@@ -29,13 +29,13 @@
             </div>
 
 
-            @*<div class="form-group">
+            <div class="form-group">
                 <label>Category</label>
-                <select multiple asp-for="ViewModel.CategoryId" asp-items="Model.ViewModel.CategoryId">
-                    <span asp-validation-for="ViewModel.CategoryId" class="text-danger"></span>
+                @*<select multiple asp-for="ViewModel.CategoryId" asp-items="Model.ViewModel.CategoryId">*@
+                <select name="Id" asp-items="Model.Catrgory"></select>
+                @*<span asp-validation-for="Category" class="text-danger"></span>*@
 
-                </select>
-            </div>*@
+            </div>
             <div class="form-group">
 
             <label class="control-label">Categories  </label>
