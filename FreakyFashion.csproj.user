@@ -10,5 +10,9 @@
     <_SelectedScaffolderID>Microsoft.WebTools.Scaffolding.Core.RazorPageScaffolder</_SelectedScaffolderID>
     <_SelectedScaffolderCategoryPath>root/Common/RazorPage</_SelectedScaffolderCategoryPath>
     <WebStackScaffolding_DbContextTypeFullName>FreakyFashion.Data.ApplicationDbContext</WebStackScaffolding_DbContextTypeFullName>
+    <ActiveDebugProfile>FreakyFashion</ActiveDebugProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>

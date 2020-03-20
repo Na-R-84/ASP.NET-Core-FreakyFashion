@@ -6,6 +6,7 @@ using FreakyFashion.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace FreakyFashion
 {
@@ -27,9 +28,24 @@ namespace FreakyFashion
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
+            //services.AddControllers(config =>
+            //{
+            //    config.ReturnHttpNotAcceptable = true;
+            //}).AddXmlSerializerFormatters().AddNewtonsoftJson();
+            services.AddSession( options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(120);
+                options.Cookie.IsEssential = true;
+            });
 
-            services.AddSession();
-            services.AddMvc();
+            //services.AddMvc().AddNewtonsoftJson(
+
+            //    options =>
+            //    {
+            //        options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+
+            //    });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
